@@ -1,0 +1,72 @@
+﻿<Window x:Class="PokemonClone.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PokemonClone"
+        mc:Ignorable="d"
+        Title="Pokemon Game" Height="600" Width="800"
+        Background="#F0F0F0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Grid.Row="0" 
+                   Text="Pokemon Game" 
+                   FontSize="32" 
+                   HorizontalAlignment="Center" 
+                   Margin="20"/>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Pokemon Display -->
+            <StackPanel Grid.Row="0" 
+                        HorizontalAlignment="Center">
+                <TextBlock x:Name="PokemonName" 
+                          FontSize="24" 
+                          HorizontalAlignment="Center"/>
+                <Image x:Name="PokemonSprite" 
+                       Width="200" 
+                       Height="200"/>
+                <TextBlock x:Name="PokemonInfo" 
+                          FontSize="16" 
+                          HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <!-- Battle Controls -->
+            <StackPanel x:Name="BattleControls" 
+                        Grid.Row="2" 
+                        Orientation="Horizontal" 
+                        HorizontalAlignment="Center" 
+                        Visibility="Collapsed">
+                <Button Content="Attack" 
+                        Margin="10" 
+                        Padding="20,10"/>
+                <Button Content="Catch" 
+                        Margin="10" 
+                        Padding="20,10"/>
+                <Button Content="Run" 
+                        Margin="10" 
+                        Padding="20,10"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Bottom Controls -->
+        <Button Grid.Row="2" 
+                Content="Find Pokemon" 
+                Click="FindPokemon_Click" 
+                HorizontalAlignment="Center" 
+                Margin="20" 
+                Padding="20,10"/>
+    </Grid>
+</Window>
