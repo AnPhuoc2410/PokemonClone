@@ -3,70 +3,46 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PokemonClone"
         mc:Ignorable="d"
-        Title="Pokemon Game" Height="600" Width="800"
-        Background="#F0F0F0">
+        Title="Pokemon Battle" Height="500" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+        <!-- Opponent Pokemon Section -->
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20">
+            <TextBlock x:Name="OpponentPokemonName" FontSize="20" FontWeight="Bold" Foreground="Black" />
+            <TextBlock x:Name="OpponentLevel" FontSize="16" Foreground="Black" />
+            <ProgressBar x:Name="OpponentHPBar" Width="200" Height="10" Maximum="100" Value="100" Foreground="Green" Background="LightGray" />
+            <TextBlock x:Name="OpponentHPText" FontSize="14" Foreground="Black" />
+        </StackPanel>
 
-        <!-- Header -->
-        <TextBlock Grid.Row="0" 
-                   Text="Pokemon Game" 
-                   FontSize="32" 
-                   HorizontalAlignment="Center" 
-                   Margin="20"/>
+        <!-- Player Pokemon Section -->
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20">
+            <TextBlock x:Name="PlayerPokemonName" FontSize="20" FontWeight="Bold" Foreground="Black" />
+            <TextBlock x:Name="PlayerLevel" FontSize="16" Foreground="Black" />
+            <ProgressBar x:Name="PlayerHPBar" Width="200" Height="10" Maximum="100" Value="100" Foreground="Green" Background="LightGray" />
+            <TextBlock x:Name="PlayerHPText" FontSize="14" Foreground="Black" />
+        </StackPanel>
 
-        <!-- Main Content -->
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+        <!-- Action Menu -->
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="LightBlue" Height="150" Width="300">
+            <TextBlock Text="What will you do?" FontSize="16" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="10" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Button x:Name="Move1Button" Grid.Row="0" Grid.Column="0" Content="Move 1" FontSize="14" FontWeight="Bold" Click="MoveButton_Click" />
+                <Button x:Name="Move2Button" Grid.Row="0" Grid.Column="1" Content="Move 2" FontSize="14" FontWeight="Bold" Click="MoveButton_Click" />
+                <Button x:Name="Move3Button" Grid.Row="1" Grid.Column="0" Content="Move 3" FontSize="14" FontWeight="Bold" Click="MoveButton_Click" />
+                <Button x:Name="Move4Button" Grid.Row="1" Grid.Column="1" Content="Move 4" FontSize="14" FontWeight="Bold" Click="MoveButton_Click" />
+            </Grid>
+        </StackPanel>
 
-            <!-- Pokemon Display -->
-            <StackPanel Grid.Row="0" 
-                        HorizontalAlignment="Center">
-                <TextBlock x:Name="PokemonName" 
-                          FontSize="24" 
-                          HorizontalAlignment="Center"/>
-                <Image x:Name="PokemonSprite" 
-                       Width="200" 
-                       Height="200"/>
-                <TextBlock x:Name="PokemonInfo" 
-                          FontSize="16" 
-                          HorizontalAlignment="Center"/>
-            </StackPanel>
-
-            <!-- Battle Controls -->
-            <StackPanel x:Name="BattleControls" 
-                        Grid.Row="2" 
-                        Orientation="Horizontal" 
-                        HorizontalAlignment="Center" 
-                        Visibility="Collapsed">
-                <Button Content="Attack" 
-                        Margin="10" 
-                        Padding="20,10"/>
-                <Button Content="Catch" 
-                        Margin="10" 
-                        Padding="20,10"/>
-                <Button Content="Run" 
-                        Margin="10" 
-                        Padding="20,10"/>
-            </StackPanel>
-        </Grid>
-
-        <!-- Bottom Controls -->
-        <Button Grid.Row="2" 
-                Content="Find Pokemon" 
-                Click="FindPokemon_Click" 
-                HorizontalAlignment="Center" 
-                Margin="20" 
-                Padding="20,10"/>
+        <!-- Background Sprites -->
+        <Image x:Name="OpponentSprite" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Height="150" Margin="50" />
+        <Image x:Name="PlayerSprite" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="150" Height="150" Margin="50" />
     </Grid>
 </Window>
